@@ -33,18 +33,7 @@ namespace SJMath.Geometry
         public static double SquarePerimeter(double part)
         {
             double result = 0;
-            if (part == 0) return result;
-
-            List<MultipleNumbersModel> multipleNumbersModel = new List<MultipleNumbersModel>();
-            multipleNumbersModel = new List<MultipleNumbersModel> {
-                new MultipleNumbersModel { number = part },
-                new MultipleNumbersModel { number = part },
-                new MultipleNumbersModel { number = part },
-                new MultipleNumbersModel { number = part }
-            };
-
-            multipleNumbersModel.AddRange(multipleNumbersModel);
-            result = Arithmetic.MultipleSum(multipleNumbersModel);
+            result = Arithmetic.SimpleMultiplication(part, 4);
 
             return result;
         }

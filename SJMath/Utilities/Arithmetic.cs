@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SJMath.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -58,15 +59,17 @@ namespace SJMath.Utilities
         /// </summary>
         /// <param name="Values">Lista de números</param>
         /// <returns>El resultado entre la suma de todos los números de la lista</returns>
-        public static double MultipleSum(List<double> Values)
+        public static double MultipleSum(List<MultipleNumbersModel> Values)
         {
-            double response = 0.0;
-            foreach (double item in Values)
+            MultipleNumbersModel multipleNumbersModel = new MultipleNumbersModel();
+            multipleNumbersModel.number = 0.0;
+
+            foreach (MultipleNumbersModel item in Values)
             {
-                response = response + item;
+                multipleNumbersModel.number = multipleNumbersModel.number + item.number;
             }
 
-            return response;
+            return multipleNumbersModel.number;
         }
 
         /// <summary>
@@ -74,15 +77,16 @@ namespace SJMath.Utilities
         /// </summary>
         /// <param name="Values">Lista de números</param>
         /// <returns>El resultado entre la resta de todos los números de la lista</returns>
-        public static double MultipleSubtraction(List<double> Values)
+        public static double MultipleSubtraction(List<MultipleNumbersModel> Values)
         {
-            double response = 0.0;
-            foreach (double item in Values)
+            MultipleNumbersModel multipleNumbersModel = new MultipleNumbersModel();
+            multipleNumbersModel.number = 0.0;
+            foreach (MultipleNumbersModel item in Values)
             {
-                response = response - item;
+                multipleNumbersModel.number = multipleNumbersModel.number - item.number;
             }
 
-            return response;
+            return multipleNumbersModel.number;
         }
 
         /// <summary>
@@ -90,15 +94,16 @@ namespace SJMath.Utilities
         /// </summary>
         /// <param name="Values">Lista de números</param>
         /// <returns>El resultado entre la multiplicación de todos los números de la lista</returns>
-        public static double MultipleMultiplication(List<double> Values)
+        public static double MultipleMultiplication(List<MultipleNumbersModel> Values)
         {
-            double response = 0.0;
-            foreach (double item in Values)
+            MultipleNumbersModel multipleNumbersModel = new MultipleNumbersModel();
+            multipleNumbersModel.number = 0.0;
+            foreach (MultipleNumbersModel item in Values)
             {
-                response = response * item;
+                multipleNumbersModel.number = multipleNumbersModel.number * item.number;
             }
 
-            return response;
+            return multipleNumbersModel.number;
         }
 
         /// <summary>
@@ -106,15 +111,37 @@ namespace SJMath.Utilities
         /// </summary>
         /// <param name="Values">Lista de números</param>
         /// <returns>El resultado entre la división de todos los números de la lista</returns>
-        public static double MultipleDivision(List<double> Values)
+        public static double MultipleDivision(List<MultipleNumbersModel> Values)
         {
-            double response = 0.0;
-            foreach (double item in Values)
+            MultipleNumbersModel multipleNumbersModel = new MultipleNumbersModel();
+            multipleNumbersModel.number = 0.0;
+            foreach (MultipleNumbersModel item in Values)
             {
-                response = response * item;
+                multipleNumbersModel.number = multipleNumbersModel.number / item.number;
             }
 
-            return response;
+            return multipleNumbersModel.number;
+        }
+
+        /// <summary>
+        /// Permite elevar a la n potencia un valor
+        /// </summary>
+        /// <param name="numberBase">Base</param>
+        /// <param name="exponent">Exponente</param>
+        /// <returns>El resultado de X^n</returns>
+        public static double SimpleExponent(double numberBase, int exponent)
+        {
+            double result = 0;
+            if (exponent == 0 || numberBase == 0) return result;
+
+            result = numberBase;
+
+            for (int i = 0; i <= exponent; i++)
+            {
+                result = result * numberBase;
+            }
+
+            return result;
         }
     }
 }

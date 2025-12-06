@@ -143,5 +143,41 @@ namespace SJMath.Utilities
 
             return result;
         }
+
+        /// <summary>
+        /// Entrega un número con la cantidad de decimales solicitada
+        /// </summary>
+        /// <param name="number">Número por truncar</param>
+        /// <param name="requiredQuantity">Cantidad de decimas solicitadas</param>
+        /// <returns>Un número con la cantidad de decimales solicitadas</returns>
+        public static double TrunkNumber(double number, int requiredQuantity = 3)
+        {
+            string quantityString = $"F{requiredQuantity}";
+            string result = number.ToString(quantityString);
+
+            return double.Parse(result);
+        }
+
+        /// <summary>
+        /// Permite obtener la raiz cuadrada de un número que sea mayor a 0
+        /// </summary>
+        /// <param name="numberBase">Número mayor a 0</param>
+        /// <returns>Raiz cuadrada del número recibido</returns>
+        public static double SquareRoot(double numberBase)
+        {
+            double tolerance = 0.0001;
+            double previousResult = 0;
+            double possibleOutcome = TrunkNumber(numberBase / 2); 
+
+            if (numberBase <= 0) return 0;
+            
+
+            do {
+                previousResult = possibleOutcome;
+                possibleOutcome = TrunkNumber(((numberBase / possibleOutcome) + possibleOutcome) * 0.5);
+            } while ((previousResult - possibleOutcome) > tolerance);
+
+            return possibleOutcome;
+        }
     }
 }
